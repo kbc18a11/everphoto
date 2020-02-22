@@ -12,8 +12,8 @@ const routes = [
         component: Home
     },
     {
-        path: '/loginform',
-        name: 'loginform',
+        path: '/login',
+        name: 'login',
         component: Loing
     }
 ];
