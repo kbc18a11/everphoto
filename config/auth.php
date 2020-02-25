@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
             'hash' => false,
         ],
@@ -113,5 +113,6 @@ return [
     */
 
     'password_timeout' => 10800,
+
 
 ];

@@ -12,7 +12,23 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+/*
+###ルーティングのテンプレート
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(["middleware" => "api"], function () {
+    // 認証が必要ないメソッド
+    Route::group(['middleware' => ['jwt.auth']], function () {
+        // 認証が必要なメソッド
+    });
+});
+*/
+
+
+/**
+ * ユーザー作成
+ */
+Route::group(["middleware" => "api"], function () {
+    Route::post('/register', 'Auth\RegisterController@register'); // 追加
+    Route::group(['middleware' => ['jwt.auth']], function () {
+    });
 });
