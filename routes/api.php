@@ -29,6 +29,13 @@ Route::group(["middleware" => "api"], function () {
  */
 Route::group(["middleware" => "api"], function () {
     Route::post('/register', 'Auth\RegisterController@register'); // 追加
-    Route::group(['middleware' => ['jwt.auth']], function () {
-    });
+});
+
+//ユーザーログイン
+Route::group(["middleware" => "guest:api"], function () {
+    Route::post("/login", "Auth\LoginController@login");
+});
+
+Route::group(["middleware" => "auth:api"], function () {
+    Route::get("/me", "Auth\LoginController@me");
 });
